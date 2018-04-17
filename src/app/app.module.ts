@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { PublisherComponent } from './publisher/publisher.component';
 import { SubscriberComponent } from './subscriber/subscriber.component';
 import { OpentokService } from './opentok.service';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { OpentokService } from './opentok.service';
     SubscriberComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : []
   ],
   providers: [OpentokService],
   bootstrap: [AppComponent]
