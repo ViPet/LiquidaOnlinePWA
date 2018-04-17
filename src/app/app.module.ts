@@ -15,6 +15,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import 'hammerjs';
 import {MatButtonModule, MatCardModule, MatIconModule, MatMenuModule} from '@angular/material';
 import { MenudemoComponent } from './menudemo/menudemo.component';
+import {GeoLocationService} from './video-component/geo-location.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { MenudemoComponent } from './menudemo/menudemo.component';
     RouterModule.forRoot(routes),
     environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : []
   ],
-  providers: [OpentokService],
+  providers: [OpentokService, GeoLocationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
