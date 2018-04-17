@@ -126,6 +126,10 @@ MIT
 MIT
 MIT
 
+@angular/router@5.2.8
+MIT
+MIT
+
 @angular/common@5.2.8
 MIT
 MIT
