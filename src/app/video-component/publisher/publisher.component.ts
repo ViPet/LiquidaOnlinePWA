@@ -1,10 +1,6 @@
 import { Component, ElementRef, AfterViewInit, ViewChild, Input } from '@angular/core';
 import { OpentokService } from '../opentok.service';
 
-const publish = () => {
-
-};
-
 @Component({
   selector: 'app-publisher',
   templateUrl: './publisher.component.html',
@@ -30,6 +26,11 @@ export class PublisherComponent implements AfterViewInit {
         this.publish();
       }
       this.session.on('sessionConnected', () => this.publish());
+
+      /* test to disable video (just in case)
+      setTimeout(() => this.publisher.publishVideo(false), 5000);
+      setTimeout(() => this.publisher.publishVideo(true), 10000);*/
+
     }
   }
 
