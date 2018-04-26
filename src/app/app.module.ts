@@ -16,7 +16,7 @@ import 'hammerjs';
 import {MatButtonModule, MatCardModule, MatIconModule, MatMenuModule} from '@angular/material';
 import { MenudemoComponent } from './menudemo/menudemo.component';
 import {GeoLocationService} from './video-component/geo-location.service';
-import {DataService} from './data.service';
+import {DataService} from './services/data.service';
 
 @NgModule({
   declarations: [

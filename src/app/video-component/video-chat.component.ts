@@ -2,12 +2,13 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { OpentokService } from './opentok.service';
 import * as OT from '@opentok/client';
 import {GeoLocationService} from './geo-location.service';
+import {DataService} from '../services/data.service';
 
 @Component({
   selector: 'app-video-chat',
   templateUrl: './video-chat.component.html',
   styleUrls: ['./video-chat.component.css'],
-  providers: [ OpentokService, GeoLocationService ]
+  providers: [ OpentokService, GeoLocationService, DataService ]
 })
 export class VideoChatComponent implements OnInit {
   title = 'Video Component';
@@ -18,7 +19,8 @@ export class VideoChatComponent implements OnInit {
   long: any;
 
 
-  constructor(private ref: ChangeDetectorRef, private opentokService: OpentokService, private geoLocationService: GeoLocationService) {
+  constructor(private ref: ChangeDetectorRef, private opentokService: OpentokService,
+              private geoLocationService: GeoLocationService) {
     this.changeDetectorRef = ref;
   }
 

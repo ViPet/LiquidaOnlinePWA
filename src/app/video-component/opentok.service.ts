@@ -1,4 +1,9 @@
 import { Injectable } from '@angular/core';
+import { DataService } from '../services/data.service';
+import { EntityManager, Entity, FilterQueryOp } from 'breeze-client';
+import { BizStream } from './services/dataService/bizStream';
+import { BizFilter } from './services/dataService/bizFilter';
+import { BizSorter, SortDirection } from './services/dataService/bizSorter';
 
 import * as OT from '@opentok/client';
 import config from '../../config';
@@ -9,7 +14,7 @@ export class OpentokService {
   session: OT.Session;
   token: string;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   getOT() {
     return OT;
@@ -21,6 +26,7 @@ export class OpentokService {
       this.token = config.TOKEN;
       return Promise.resolve(this.session);
     } else {
+
       return fetch(config.SAMPLE_SERVER_BASE_URL + '/session')
         .then((data) => data.json())
         .then((json) => {
@@ -39,7 +45,7 @@ export class OpentokService {
         } else {
           resolve(this.session);
         }
-      })
+      });
     });
   }
 }
