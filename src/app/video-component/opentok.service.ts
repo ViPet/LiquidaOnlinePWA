@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { DataService } from '../services/data.service';
+import { DataService } from '../services/dataService/data.service';
 import { EntityManager, Entity, FilterQueryOp } from 'breeze-client';
-import { BizStream } from './services/dataService/bizStream';
-import { BizFilter } from './services/dataService/bizFilter';
-import { BizSorter, SortDirection } from './services/dataService/bizSorter';
+import { BizStream } from '../services/dataService/bizStream';
+import { BizFilter } from '../services/dataService/bizFilter';
+import {BizSorter, SortDirection } from '../services/dataService/bizSorter';
 
 import * as OT from '@opentok/client';
 import config from '../../config';
@@ -20,13 +20,24 @@ export class OpentokService {
     return OT;
   }
 
-  initSession() {
+  initSession(PIN: string) {
     if (config.API_KEY && config.TOKEN && config.SESSION_ID) {
       this.session = this.getOT().initSession(config.API_KEY, config.SESSION_ID);
       this.token = config.TOKEN;
       return Promise.resolve(this.session);
     } else {
+      const context: EntityManager = new EntityManager(config.SAMPLE_SERVER_BASE_URL);
+      return new Promise((resolve, reject) => {
+        this.dataService.getEntitiesParam('GetSessioneByPin', ({ pin: PIN }), context, data => {
+          const breezeSession: Entity = data[0];
+          console.log(breezeSession);
+          this.session = this.getOT().initSession(breezeSession['ApiKey'], breezeSession['SessionID']);
+          this.token = breezeSession['Token'];
+          resolve(this.session);
+        });
+      });
 
+      /*
       return fetch(config.SAMPLE_SERVER_BASE_URL + '/session')
         .then((data) => data.json())
         .then((json) => {
@@ -34,6 +45,7 @@ export class OpentokService {
           this.token = json.token;
           return this.session;
         });
+        */
     }
   }
 

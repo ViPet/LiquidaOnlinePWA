@@ -1,7 +1,7 @@
 {
-  "name": "Progressive Web Cat",
-  "short_name": "PWCat",
-  "description": "A funny cat image generator",
+  "name": "LiquidaOnline",
+  "short_name": "LiqOn",
+  "description": "Liquida Online Progressive Web App",
   "icons": [{
     "src": "assets/icon-64x64.png",
     "sizes": "64x64",

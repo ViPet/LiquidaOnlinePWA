@@ -6,7 +6,7 @@ import { BizStream } from './bizStream';
 import { BizFilter } from './bizFilter';
 import { BizSorter } from './bizSorter';
 import { SortDirection } from './bizSorter';
-import { Dictionary } from '../../infrastructure/region/dictionary';
+// import { Dictionary } from '../../infrastructure/region/dictionary';
 
 
 
@@ -75,6 +75,7 @@ export class DataService {
     const query = EntityQuery.from(entityName).withParameters(param);
 
     context.executeQuery(query).then(success).catch(failed);
+
 
     function success(data) {
       //   alert('success');
@@ -150,7 +151,7 @@ export class DataService {
   getEntitiesByIDParentEx(entityName: string, parentProperty: string, idParent: any,
                           sorters: BizSorter[], context: EntityManager, callback: (data: Entity[]) => void) {
     let orderBy = '';
-    const query = EntityQuery.from(entityName).where(parentProperty, '==', idParent);
+    let query = EntityQuery.from(entityName).where(parentProperty, '==', idParent);
 
     if (sorters != null && sorters.length > 0) {
       for (const sorter of sorters) {
@@ -199,7 +200,7 @@ export class DataService {
   //  }
 
   //  getEntitiesByStream(entityName: string, stream: BizStream, context: EntityManager, callback: (data: Entity[]) => void) {
-  //      const query: EntityQuery;
+  //      let query: EntityQuery;
   //      var baseQuery: EntityQuery = EntityQuery.from(entityName);
   //      var wherePredicate: breeze.Predicate;
   //      var orderBy: string = '';
@@ -272,7 +273,7 @@ export class DataService {
   //      }
   //      this.getEntitiesByStreamEx(entityName, stream, context, pageNumber, pageSize, callback);
   //  }
-
+/*
   getEntitiesByStream(entityName: string, stream: BizStream, context: EntityManager,
                       callback: (data: Entity[]) => void, pageIndex?: number, pageSize?: number, ) {
 
@@ -315,7 +316,7 @@ export class DataService {
       return Promise.reject(msg); //   use ES6 promise within A2 app
     }
   }
-
+*/
   showCache(context: EntityManager) {
     alert('showCache');
     if (context != null) {
@@ -354,7 +355,7 @@ export class DataService {
   }
 
   saveChanges(context: EntityManager, callback: (saveResult, succeded: boolean, reason: string) => void) {
-    const myAziende: Entity[];
+    // let myAziende: Entity[];
 
     //  alert('SaveChanges: Cache Entities');
     //  alert(manager.getEntities().length);
@@ -396,7 +397,7 @@ export class DataService {
     }
 
     function handleSaveValidationError(error) {
-      const message = 'Not saved due to validation error';
+      let message = 'Not saved due to validation error';
       try { //   fish out the first error
         const firstErr = error.entityErrors[0];
         message += ': ' + firstErr.errorMessage;
@@ -409,10 +410,10 @@ export class DataService {
     context.rejectChanges();
   }
 
-
+/*
   //   Private
   private buildQuery(entityName: string, stream: BizStream, pageIndex?: number, pageSize?: number): EntityQuery {
-    const query: EntityQuery;
+    let query: EntityQuery;
     const baseQuery: EntityQuery = EntityQuery.from(entityName);
     let wherePredicate: Predicate;
     let orderBy = '';
@@ -473,7 +474,7 @@ export class DataService {
     }
     return query;
   }
-
+*/
   private getProperty(entity: Entity, propertyName: string) {
     const breezeEntity: any = entity;
 
