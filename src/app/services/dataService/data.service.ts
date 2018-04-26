@@ -6,7 +6,7 @@ import { BizStream } from './bizStream';
 import { BizFilter } from './bizFilter';
 import { BizSorter } from './bizSorter';
 import { SortDirection } from './bizSorter';
-// import { Dictionary } from '../../infrastructure/region/dictionary';
+import { Dictionary } from '../../infrastructure/region/dictionary';
 
 
 
@@ -273,7 +273,7 @@ export class DataService {
   //      }
   //      this.getEntitiesByStreamEx(entityName, stream, context, pageNumber, pageSize, callback);
   //  }
-/*
+
   getEntitiesByStream(entityName: string, stream: BizStream, context: EntityManager,
                       callback: (data: Entity[]) => void, pageIndex?: number, pageSize?: number, ) {
 
@@ -316,7 +316,7 @@ export class DataService {
       return Promise.reject(msg); //   use ES6 promise within A2 app
     }
   }
-*/
+
   showCache(context: EntityManager) {
     alert('showCache');
     if (context != null) {
@@ -410,7 +410,7 @@ export class DataService {
     context.rejectChanges();
   }
 
-/*
+
   //   Private
   private buildQuery(entityName: string, stream: BizStream, pageIndex?: number, pageSize?: number): EntityQuery {
     let query: EntityQuery;
@@ -474,7 +474,7 @@ export class DataService {
     }
     return query;
   }
-*/
+
   private getProperty(entity: Entity, propertyName: string) {
     const breezeEntity: any = entity;
 
