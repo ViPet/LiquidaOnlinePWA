@@ -118,6 +118,10 @@ THE SOFTWARE.
 MIT
 MIT
 
+breeze-client@1.7.1
+MIT
+MIT
+
 hammerjs@2.0.8
 MIT
 The MIT License (MIT)
@@ -154,6 +158,14 @@ MIT
 MIT
 MIT
 
+breeze-bridge2-angular@1.0.0
+MIT
+MIT
+
+@angular/common@5.2.8
+MIT
+MIT
+
 @angular/material@5.2.4
 MIT
 The MIT License
@@ -178,7 +190,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-@angular/common@5.2.8
+@angular/forms@5.2.8
+MIT
+MIT
+
+@angular/http@5.2.8
 MIT
 MIT
 
