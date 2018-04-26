@@ -16,6 +16,7 @@ import 'hammerjs';
 import {MatButtonModule, MatCardModule, MatIconModule, MatMenuModule} from '@angular/material';
 import { MenudemoComponent } from './menudemo/menudemo.component';
 import {GeoLocationService} from './video-component/geo-location.service';
+import {DataService} from './data.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import {GeoLocationService} from './video-component/geo-location.service';
     RouterModule.forRoot(routes),
     environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : []
   ],
-  providers: [OpentokService, GeoLocationService],
+  providers: [OpentokService, GeoLocationService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
