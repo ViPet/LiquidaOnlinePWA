@@ -15,7 +15,10 @@ export class SubscriberComponent implements AfterViewInit {
   constructor() { }
 
   ngAfterViewInit() {
-    const subscriber = this.session.subscribe(this.stream, this.subscriberDiv.nativeElement, (err) => {
+    const subscriber = this.session.subscribe(this.stream, this.subscriberDiv.nativeElement, {
+      width: (0.6 * window.innerWidth),
+      height: (0.4 * window.innerWidth)
+    }, (err) => {
       if (err) {
         alert(err.message);
       }

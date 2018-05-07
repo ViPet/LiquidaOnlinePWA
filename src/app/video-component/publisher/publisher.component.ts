@@ -1,4 +1,4 @@
-import { Component, ElementRef, AfterViewInit, ViewChild, Input } from '@angular/core';
+import {Component, ElementRef, AfterViewInit, ViewChild, Input, HostListener} from '@angular/core';
 import { OpentokService } from '../opentok.service';
 
 @Component({
@@ -18,9 +18,15 @@ export class PublisherComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    /*document.getElementById('publisherDiv').style.width = '100%';
+    document.getElementById('publisherDiv').style.height = '100%';*/
+    console.log(window.innerWidth);
     const OT = this.opentokService.getOT();
-    this.publisher = OT.initPublisher(this.publisherDiv.nativeElement, {insertMode: 'append'});
-
+    this.publisher = OT.initPublisher(this.publisherDiv.nativeElement, {
+      insertMode: 'append',
+      width: (0.6 * window.innerWidth),
+      height: (0.4 * window.innerWidth)
+    } );
     if (this.session) {
       if (this.session['isConnected']()) {
         this.publish();

@@ -25,7 +25,7 @@ export class VideoChatComponent implements OnInit {
   }
 
   ngOnInit () {
-    this.opentokService.initSession('009801002').then((session: OT.Session) => {
+    this.opentokService.initSession('772619013').then((session: OT.Session) => {
       this.session = session;
       this.session.on('streamCreated', (event) => {
         this.streams.push(event.stream);
